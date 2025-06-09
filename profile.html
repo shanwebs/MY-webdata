@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile Page</title>
   <style>
     body, html {
@@ -12,10 +12,15 @@
       background-color: #111;
       color: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .profile-section {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
+      padding-top: 20vh;
     }
 
     .profile-icon {
@@ -26,18 +31,15 @@
       background-image: url('https://i.pinimg.com/1200x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg');
       background-size: cover;
       background-position: center;
-      position: absolute;
-      top: 20vh;
-      left: 50%;
-      transform: translateX(-50%);
       box-shadow: 0 0 10px #66ccffaa;
       cursor: pointer;
       transition: transform 0.3s ease;
+      animation: fadeIn 1s ease forwards;
       z-index: 2;
     }
 
     .profile-icon:hover {
-      transform: translateX(-50%) scale(1.05);
+      transform: scale(1.05);
     }
 
     .horizontal-line {
@@ -47,7 +49,9 @@
       width: 100vw;
       height: 2px;
       background-color: #66ccff;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scaleX(0);
+      animation: lineGrow 1s ease forwards;
+      animation-delay: 0.5s;
       z-index: 1;
     }
 
@@ -62,9 +66,9 @@
       align-items: center;
       cursor: pointer;
       border: 2px solid #111;
-      top: calc(20vh + 150px - 22px);
+      top: calc(20vh + 128px);
       left: 50%;
-      transform: translateX(calc(-50% + 35px));
+      transform: translateX(35px);
       z-index: 3;
       box-shadow: 0 0 8px #66ccffaa;
       transition: background-color 0.3s ease, transform 0.3s ease;
@@ -72,30 +76,27 @@
 
     .pencil-icon:hover {
       background-color: #55aadd;
-      transform: translateX(calc(-50% + 35px)) scale(1.1);
+      transform: translateX(35px) scale(1.1);
     }
 
     .pencil-icon svg {
       width: 14px;
       height: 14px;
       fill: #111;
-      transition: width 0.3s ease, height 0.3s ease;
-    }
-
-    .pencil-icon:hover svg {
-      width: 16px;
-      height: 16px;
     }
 
     .input-container {
-      margin-top: calc(20vh + 150px + 60px);
-      width: 95vw;
-      max-width: 600px;
+      margin-top: 100px;
+      width: 600px;
+      max-width: 90vw;
       display: flex;
       flex-direction: column;
       gap: 18px;
       z-index: 2;
-      position: relative;
+      animation: fadeInInputs 0.8s ease forwards;
+      animation-delay: 1.8s;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     .input-container label {
@@ -106,7 +107,7 @@
     }
 
     .input-container input {
-      padding: 12px 16px;
+      padding: 10px 15px;
       border-radius: 15px;
       border: none;
       font-size: 1rem;
@@ -116,7 +117,8 @@
       transition: transform 0.3s ease;
     }
 
-    .input-container input:hover {
+    .input-container input:focus {
+      outline: none;
       transform: scale(1.02);
     }
 
@@ -125,48 +127,63 @@
       color: #aaa;
       cursor: default;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInInputs {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes lineGrow {
+      to {
+        transform: translateX(-50%) scaleX(1);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="profile-icon" title="Profile Icon"></div>
+  <div class="profile-section">
+    <div class="horizontal-line"></div>
 
-  <div class="horizontal-line"></div>
+    <div class="profile-icon" title="Profile Icon"></div>
 
-  <div class="pencil-icon" id="pencilIcon" title="Change Profile Picture">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/>
-    </svg>
-  </div>
+    <div class="pencil-icon" title="Change Profile Picture">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/>
+      </svg>
+    </div>
 
-  <div class="input-container">
-    <label for="username">Username</label>
-    <input type="text" id="username" readonly />
+    <div class="input-container">
+      <label for="username">Username</label>
+      <input type="text" id="username" value="" readonly />
 
-    <label for="dob">Date of Birth</label>
-    <input type="date" id="dob" />
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" />
 
-    <label for="hobby">Hobby</label>
-    <input type="text" id="hobby" />
+      <label for="hobby">Hobby</label>
+      <input type="text" id="hobby" />
 
-    <label for="email">Email</label>
-    <input type="email" id="email" />
+      <label for="email">Email</label>
+      <input type="email" id="email" />
+    </div>
   </div>
 
   <script>
-    // Show popup on pencil click
-    document.getElementById('pencilIcon').addEventListener('click', () => {
-      alert('Not available yet. Coming soon!');
-    });
-
     // Set the real username from localStorage
-    const realUsername = localStorage.getItem('username');
-    if (realUsername) {
-      document.getElementById('username').value = realUsername;
-    } else {
-      document.getElementById('username').value = 'Guest';
-    }
-  </script>
+    const username = localStorage.getItem("username") || "User";
+    document.getElementById("username").value = username;
 
+    // Pencil icon alert
+    document.querySelector(".pencil-icon").addEventListener("click", () => {
+      alert("Profile picture change is not available yet.\nComing soon!");
+    });
+  </script>
 </body>
 </html>
