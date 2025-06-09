@@ -8,13 +8,14 @@
     body {
       background-color: #111;
       margin: 0;
-      padding: 0 15px 15px 15px;
+      padding: 40px 20px 20px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: white;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
     }
 
     .profile {
@@ -28,41 +29,50 @@
       background-image: url('https://i.pinimg.com/1200x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg');
       background-size: cover;
       background-position: center 30%;
-      opacity: 0.7;
+      opacity: 0;
       cursor: pointer;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.7s; /* Reduced delay */
       z-index: 1000;
     }
 
     .username-header {
-      margin-top: 15px; /* top margin for spacing */
       font-size: 28px;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 10px;
-      /* center horizontally */
       justify-content: center;
-      width: 100%;
       max-width: 800px;
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0s;
+      user-select: none;
     }
 
     .green-dot {
       width: 16px;
       height: 16px;
-      background-color: #90ee90; /* light green */
+      background-color: #90ee90;
       border-radius: 50%;
       box-shadow: 0 0 8px #90ee90;
       position: relative;
-      top: 3px;  /* lower the dot */
+      top: 3px;
+      flex-shrink: 0;
     }
 
     .boxes-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 10px;  /* smaller gap */
-      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 12px;
       max-width: 800px;
-      margin-top: 20px;
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 0.7s; /* Reduced delay */
     }
 
     .box {
@@ -78,20 +88,27 @@
       background-color: rgba(102, 204, 255, 0.2);
     }
 
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 600px) {
       .boxes-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 boxes per row on mobile */
-        gap: 12px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
       }
       .username-header {
         font-size: 22px;
+        margin-bottom: 25px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="profile"></div>
+  <div class="profile" title="Profile"></div>
 
   <div class="username-header">
     <div class="green-dot"></div>
@@ -106,11 +123,6 @@
     <div class="box"></div>
     <div class="box"></div>
   </div>
-
-  <script>
-    // If you want to dynamically set username here:
-    // document.getElementById('usernameDisplay').textContent = 'YourUsername';
-  </script>
 
 </body>
 </html>
