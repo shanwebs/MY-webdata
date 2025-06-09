@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => { 
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('loginForm');
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const allowedUsers = {
     Shan: 'shan2008',
     Nishaf: 'sabu',
-    Rabeeh: 'rabeeh123', // You can add more users here
+    Rabeeh: 'rabeeh123'
   };
 
-  // Move focus to password input when Enter pressed in username input
+  // Move focus to password input when Enter pressed
   usernameInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Submit form when Enter pressed in password input
+  // Submit form on Enter in password
   passwordInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -51,26 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Success! Clear error
+    // Clear error
     errorMsg.style.display = 'none';
 
-    // Save username and login time to localStorage for dashboard page
-    localStorage.setItem('username', username);
-    localStorage.setItem('loginTime', new Date().toLocaleString());
-
     // Ask for notification permission
-    if ('Notification' in window && Notification.permission === 'default') {
+    if (Notification && Notification.permission !== 'granted') {
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
-          new Notification('Welcome!', {
-            body: `Hello ${username}, you’ve logged in successfully!`,
-            icon: 'https://cdn-icons-png.flaticon.com/512/545/545705.png'
+          new Notification('Login Successful!', {
+            body: `Welcome back, ${username}`,
+            icon: 'https://cdn-icons-png.flaticon.com/512/847/847969.png'
           });
         }
       });
     }
 
-    // Redirect to dashboard page after login success
+    // Redirect
     window.location.href = 'afterlg.html';
   });
 });
