@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Allowed credentials
   const allowedUsers = {
-    Shan: 'shan2008', // you can add more users here
+    Shan: 'shan2008',
+    Nishaf:'sabu',// you can add more users here
   };
 
   // Move focus to password input when Enter pressed in username input
