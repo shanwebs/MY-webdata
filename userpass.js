@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
   const form = document.getElementById('loginForm');
   const usernameInput = document.getElementById('username');
   const passwordInput = document.getElementById('password');
@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Allowed credentials
   const allowedUsers = {
     Shan: 'shan2008',
-    Nishaf:'sabu',
-    Rabeeh:'rabeeh123',// you can add more users here
+    Nishaf: 'sabu',
+    Rabeeh: 'rabeeh123', // You can add more users here
   };
 
   // Move focus to password input when Enter pressed in username input
@@ -54,8 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Success! Clear error
     errorMsg.style.display = 'none';
 
-    // Save username to localStorage for dashboard page
+    // Save username and login time to localStorage for dashboard page
     localStorage.setItem('username', username);
+    localStorage.setItem('loginTime', new Date().toLocaleString());
+
+    // Ask for notification permission
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission().then(permission => {
+        if (permission === 'granted') {
+          new Notification('Welcome!', {
+            body: `Hello ${username}, you’ve logged in successfully!`,
+            icon: 'https://cdn-icons-png.flaticon.com/512/545/545705.png'
+          });
+        }
+      });
+    }
 
     // Redirect to dashboard page after login success
     window.location.href = 'afterlg.html';
