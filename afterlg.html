@@ -2,9 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Success</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard</title>
+  <style>
+    body {
+      background-color: #111;
+      margin: 0;
+      padding: 0 15px 15px 15px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      border: 2.5px solid #66ccff;
+      border-radius: 50%;
+      background-image: url('https://i.pinimg.com/1200x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.7;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .username-header {
+      margin-top: 15px; /* top margin for spacing */
+      font-size: 28px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      /* center horizontally */
+      justify-content: center;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .green-dot {
+      width: 16px;
+      height: 16px;
+      background-color: #90ee90; /* light green */
+      border-radius: 50%;
+      box-shadow: 0 0 8px #90ee90;
+      position: relative;
+      top: 3px;  /* lower the dot */
+    }
+
+    .boxes-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;  /* smaller gap */
+      width: 100%;
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    .box {
+      aspect-ratio: 1 / 1;
+      border: 2px solid #66ccff;
+      border-radius: 12px;
+      background-color: transparent;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .box:hover {
+      background-color: rgba(102, 204, 255, 0.2);
+    }
+
+    @media (max-width: 600px) {
+      .boxes-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 boxes per row on mobile */
+        gap: 12px;
+      }
+      .username-header {
+        font-size: 22px;
+      }
+    }
+  </style>
 </head>
-<body style="background-color:#111;color:#66ccff;display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
-  <h1>Login Successful!</h1>
+<body>
+
+  <div class="profile"></div>
+
+  <div class="username-header">
+    <div class="green-dot"></div>
+    <div id="usernameDisplay">Shan</div>
+  </div>
+
+  <div class="boxes-container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+
+  <script>
+    // If you want to dynamically set username here:
+    // document.getElementById('usernameDisplay').textContent = 'YourUsername';
+  </script>
+
 </body>
 </html>
