@@ -2,25 +2,165 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Profile Page</title>
   <style>
-    body {
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
+    body, html {
+      margin: 0; 
+      padding: 0; 
+      height: 100%;
+      background-color: #111;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      position: relative;
     }
-    h1 {
+
+    .profile-icon {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #66ccff;
+      background-image: url('https://i.pinimg.com/1200x/c9/e3/e8/c9e3e810a8066b885ca4e882460785fa.jpg');
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 20vh;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px #66ccffaa;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .profile-icon:hover {
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .horizontal-line {
+      position: absolute;
+      top: calc(20vh + 75px);
+      left: 50%;
+      width: 10000px;
+      height: 2px;
+      background-color: #66ccff;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .pencil-icon {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background-color: #66ccff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      border: 2px solid #111;
+      top: calc(20vh + 150px - 22px);
+      left: 50%;
+      transform: translateX(calc(-50% + 35px));
+      z-index: 3;
+      box-shadow: 0 0 8px #66ccffaa;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .pencil-icon:hover {
+      background-color: #55aadd;
+      transform: translateX(calc(-50% + 35px)) scale(1.1);
+    }
+
+    .pencil-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: #111;
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .pencil-icon:hover svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .input-container {
+      margin-top: calc(20vh + 150px + 60px);
+      width: 95vw;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .input-container label {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      display: block;
       color: #66ccff;
+    }
+
+    .input-container input {
+      padding: 10px 15px;
+      border-radius: 15px;
+      border: none;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #222;
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .input-container input:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 8px #66ccffaa;
+    }
+
+    .input-container input[readonly] {
+      background-color: #333;
+      color: #aaa;
+      cursor: default;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Your Profile Page 👤</h1>
-  <p>This is where your profile settings or info will go.</p>
+
+  <div class="profile-icon" title="Profile Icon"></div>
+  <div class="horizontal-line"></div>
+
+  <!-- Pencil Icon -->
+  <div class="pencil-icon" id="pencilIcon" title="Edit">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 0 0 0-1.42l-2.34-2.34a1.003 1.003 0 0 0-1.42 0l-1.83 1.83 3.75 3.75 1.84-1.82z"/>
+    </svg>
+  </div>
+
+  <!-- Input Fields -->
+  <div class="input-container">
+    <label for="username">Username</label>
+    <input type="text" id="username" value="user" readonly />
+
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" />
+
+    <label for="hobby">Hobby</label>
+    <input type="text" id="hobby" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" />
+  </div>
+
+  <script>
+    document.getElementById('pencilIcon').addEventListener('click', () => {
+      alert('Not available yet. Coming soon!');
+    });
+  </script>
+
 </body>
 </html>
