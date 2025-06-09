@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Allowed credentials
   const allowedUsers = {
-    Shan: 'shan2008',//new will down this
+    Shan: 'shan2008', // you can add more users here
   };
 
   // Move focus to password input when Enter pressed in username input
@@ -49,9 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Success! Clear error and redirect
+    // Success! Clear error
     errorMsg.style.display = 'none';
-    // Redirect to another page after login success
-    window.location.href = 'afterlg.html'; 
+
+    // Save username to localStorage for dashboard page
+    localStorage.setItem('username', username);
+
+    // Redirect to dashboard page after login success
+    window.location.href = 'afterlg.html';
   });
 });
