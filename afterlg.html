@@ -212,6 +212,42 @@
       filter: invert(1);
     }
 
+    .ud-icon {
+      position: fixed;
+      top: 255px; /* below mic-icon */
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      z-index: 94;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.55s;
+    }
+
+    .ud-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #222;
+      border: 2.5px solid #66ccff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .ud-text {
+      color: #66ccff;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+
     .earth-content {
       position: fixed;
       top: 115px;
@@ -312,6 +348,183 @@
         margin-bottom: 10px;
       }
     }
+
+    #shan-special {
+      display: none;
+      color: #66ccff;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    #shan-special button {
+      margin-top: 6px;
+      background: #222;
+      color: #66ccff;
+      border: 1px solid #66ccff;
+      border-radius: 6px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    .ud-content {
+      position: fixed;
+      top: 115px;
+      left: 95px;
+      margin: 0;
+      max-width: 340px;
+      background: #181f25;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #0006;
+      padding: 32px 28px 28px 28px;
+      color: #fff;
+      z-index: 11;
+      opacity: 1;
+      transition: opacity 0.6s, transform 0.6s;
+      display: block;
+      transform: translateY(0);
+      animation: fadeInBox 0.6s ease;
+    }
+    .ud-content:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px #00cfff55;
+    }
+    @media (max-width: 600px) {
+      .ud-content {
+        left: 0;
+        right: 0;
+        max-width: 100vw;
+        padding: 10px 2vw 10px 2vw;
+        border-radius: 12px;
+        top: 70px;
+      }
+      .ud-content h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      #usersTable th, #usersTable td {
+        font-size: 12px !important;
+        padding: 4px !important;
+        word-break: break-word;
+      }
+      #usersTable {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        font-size: 12px;
+      }
+      #usersTable thead, #usersTable tbody, #usersTable tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+      #usersTable th, #usersTable td {
+        min-width: 80px;
+      }
+      .ud-content p {
+        font-size: 13px;
+      }
+    }
+
+    .ud-icon.selected .ud-circle {
+      box-shadow: 0 0 0 4px #ff444455, 0 0 12px 2px #ff444499;
+      border-color: #ff4444;
+      animation: udPulse 0.7s;
+    }
+    @keyframes udPulse {
+      0% {
+        box-shadow: 0 0 0 0 #ff444455, 0 0 0 0 #ff444499;
+        border-color: #66ccff;
+      }
+      60% {
+        box-shadow: 0 0 0 8px #ff444433, 0 0 24px 8px #ff444499;
+        border-color: #ff4444;
+      }
+      100% {
+        box-shadow: 0 0 0 4px #ff444455, 0 0 12px 2px #ff444499;
+        border-color: #ff4444;
+      }
+    }
+
+    .a-icon {
+      position: fixed;
+      top: 325px; /* below UD icon */
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      z-index: 93;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.6s;
+      cursor: pointer;
+    }
+    .a-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #222;
+      border: 2.5px solid #66ccff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .a-profile-svg {
+      display: block;
+    }
+    .a-plus {
+      position: absolute;
+      right: 8px;
+      top: 8px;
+      color: #00ff99;
+      font-size: 18px;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none;
+    }
+    @media (max-width: 600px) {
+      .a-icon {
+        left: 8px;
+        width: 40px;
+        height: 40px;
+        top: 265px;
+      }
+      .a-circle {
+        width: 40px;
+        height: 40px;
+      }
+      .a-profile-svg {
+        width: 16px;
+        height: 16px;
+      }
+      .a-plus {
+        right: 6px;
+        top: 6px;
+        font-size: 14px;
+      }
+    }
+    .a-icon.selected .a-circle {
+      box-shadow: 0 0 0 4px #00ff9955, 0 0 12px 2px #00ff9999;
+      border-color: #00ff99;
+      animation: aPulse 0.7s;
+    }
+    @keyframes aPulse {
+      0% {
+        box-shadow: 0 0 0 0 #00ff9955, 0 0 0 0 #00ff9999;
+        border-color: #66ccff;
+      }
+      60% {
+        box-shadow: 0 0 0 8px #00ff9933, 0 0 24px 8px #00ff9999;
+        border-color: #00ff99;
+      }
+      100% {
+        box-shadow: 0 0 0 4px #00ff9955, 0 0 12px 2px #00ff9999;
+        border-color: #00ff99;
+      }
+    }
   </style>
 </head>
 <body>
@@ -337,10 +550,65 @@
       <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/mic-fill.svg" alt="Mic Icon" />
     </div>
   </div>
+  <div class="ud-icon" id="udIcon">
+    <div class="ud-circle">
+      <span class="ud-text">UD</span>
+    </div>
+  </div>
+  <div class="a-icon" id="aIcon" style="display:none;">
+    <div class="a-circle">
+      <!-- Default profile SVG icon -->
+      <svg class="a-profile-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="8" r="4" stroke="#66ccff" stroke-width="2" fill="none"/>
+        <path d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6" stroke="#66ccff" stroke-width="2" fill="none"/>
+      </svg>
+      <!-- Plus icon -->
+      <span class="a-plus">+</span>
+    </div>
+  </div>
 
   <div class="earth-content" id="earthContent">
     <h2>COMPLETE YOUR PROFILE</h2>
     <button class="earth-btn" id="goBtn">Go</button>
+  </div>
+
+  <div class="ud-content" id="udContent" style="display:none;">
+    <h2>UD WINDOW</h2>
+    <p>This is your special UD window content.</p>
+    <table id="usersTable" style="width:100%; color:#fff; border-collapse:collapse; margin-top:18px;">
+      <thead>
+        <tr style="background:#222;">
+          <th style="border:1px solid #444; padding:6px;">Username</th>
+          <th style="border:1px solid #444; padding:6px;">Date of Birth</th>
+          <th style="border:1px solid #444; padding:6px;">Hobby</th>
+          <th style="border:1px solid #444; padding:6px;">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Filled by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <div class="a-content" id="aContent" style="display:none;">
+    <h2>A WINDOW</h2>
+    <p style="margin-bottom:14px;color:#66ccff;">You can add new users from here.</p>
+    <form id="addUserForm" style="margin-top:0;">
+      <table style="width:100%; color:#fff; border-collapse:collapse;">
+        <tr>
+          <td style="padding:6px; background:#181f25;">
+            <input type="text" id="newUsername" name="newUsername" placeholder="Username" required style="width:100%;padding:8px 10px;border-radius:5px;border:1.5px solid #222;background:#181f25;color:#fff;outline:none;">
+          </td>
+          <td style="padding:6px; background:#181f25;">
+            <input type="password" id="newPassword" name="newPassword" placeholder="Password" required style="width:100%;padding:8px 10px;border-radius:5px;border:1.5px solid #222;background:#181f25;color:#fff;outline:none;">
+          </td>
+          <td style="padding:6px; background:#181f25;">
+            <button type="submit" style="padding:8px 18px;border-radius:5px;background:#00ff99;color:#111;font-weight:bold;border:none;cursor:pointer;">Add</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div id="addUserMsg" style="margin-top:10px;font-size:13px;color:#00ff99;"></div>
   </div>
 
   <div class="dropdown" id="dropdownMenu">
@@ -386,22 +654,134 @@
     const internetIcon = document.getElementById('internetIcon');
     const micIcon = document.getElementById('micIcon');
     const earthContent = document.getElementById('earthContent');
+    const udIcon = document.getElementById('udIcon');
+    const udContent = document.getElementById('udContent');
+    const aIcon = document.getElementById('aIcon');
+    const aContent = document.getElementById('aContent');
 
     internetIcon.addEventListener('click', () => {
       internetIcon.classList.add('selected');
       micIcon.classList.remove('selected');
+      udIcon.classList.remove('selected');
+      aIcon.classList.remove('selected');
       earthContent.style.display = 'block';
+      udContent.style.display = 'none';
+      aContent.style.display = 'none';
     });
 
     micIcon.addEventListener('click', () => {
       micIcon.classList.add('selected');
       internetIcon.classList.remove('selected');
+      udIcon.classList.remove('selected');
+      aIcon.classList.remove('selected');
       earthContent.style.display = 'none';
+      udContent.style.display = 'none';
+      aContent.style.display = 'none';
     });
+
+    udIcon.addEventListener('click', () => {
+      udIcon.classList.add('selected');
+      micIcon.classList.remove('selected');
+      internetIcon.classList.remove('selected');
+      aIcon.classList.remove('selected');
+      earthContent.style.display = 'none';
+      udContent.style.display = 'block';
+      aContent.style.display = 'none';
+    });
+
+    // Show A icon only for Shan
+    if (username.trim().toLowerCase() === 'shan') {
+      aIcon.style.display = 'flex';
+
+      aIcon.addEventListener('click', () => {
+        aIcon.classList.add('selected');
+        udIcon.classList.remove('selected');
+        micIcon.classList.remove('selected');
+        internetIcon.classList.remove('selected');
+        earthContent.style.display = 'none';
+        udContent.style.display = 'none';
+        aContent.style.display = 'block';
+      });
+
+      // Hide A window when other icons are clicked
+      udIcon.addEventListener('click', () => {
+        aIcon.classList.remove('selected');
+        aContent.style.display = 'none';
+      });
+      micIcon.addEventListener('click', () => {
+        aIcon.classList.remove('selected');
+        aContent.style.display = 'none';
+      });
+      internetIcon.addEventListener('click', () => {
+        aIcon.classList.remove('selected');
+        aContent.style.display = 'none';
+      });
+    }
 
     document.getElementById('goBtn').addEventListener('click', function() {
       window.location.href = 'profile.html';
     });
+
+    // Fill users table in UD window
+    function fillUsersTable() {
+      const usersTableBody = document.querySelector('#usersTable tbody');
+      usersTableBody.innerHTML = '';
+      // Loop through all localStorage keys
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        // Only look for keys ending with _profile
+        if (key.endsWith('_profile')) {
+          const username = key.replace('_profile', '');
+          try {
+            const data = JSON.parse(localStorage.getItem(key));
+            if (data && typeof data === 'object') {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td style="border:1px solid #444; padding:6px;">${username}</td>
+                <td style="border:1px solid #444; padding:6px;">${data.dob || ''}</td>
+                <td style="border:1px solid #444; padding:6px;">${data.hobby || ''}</td>
+                <td style="border:1px solid #444; padding:6px;">${data.email || ''}</td>
+              `;
+              usersTableBody.appendChild(tr);
+            }
+          } catch (e) {}
+        }
+      }
+    }
+
+    // Only show table for Shan user
+    if (username.trim().toLowerCase() === 'shan') {
+      udIcon.addEventListener('click', fillUsersTable);
+    }
+
+    // Handle add user form submission
+    const addUserForm = document.getElementById('addUserForm');
+    if (addUserForm) {
+      addUserForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('newUsername').value.trim();
+        const password = document.getElementById('newPassword').value;
+        const msg = document.getElementById('addUserMsg');
+        if (!username || !password) {
+          msg.textContent = "Please enter both username and password.";
+          msg.style.color = "#ff4444";
+          return;
+        }
+        // Send to userpass.js (assumes userpass.js exposes a saveUserPass function)
+        if (typeof saveUserPass === "function") {
+          saveUserPass(username, password);
+          msg.textContent = "User added!";
+          msg.style.color = "#00ff99";
+          addUserForm.reset();
+        } else {
+          // Fallback: Save to localStorage (for demo)
+          localStorage.setItem("userpass_" + username, password);
+          msg.textContent = "User added (local)!";
+          msg.style.color = "#00ff99";
+          addUserForm.reset();
+        }
+      });
+    }
   </script>
 </body>
 </html>
