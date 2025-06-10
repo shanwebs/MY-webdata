@@ -367,28 +367,28 @@
       .ud-content,
       .earth-content,
       .a-content {
-        left: 48px !important; /* margin from left to avoid icon overlap */
+        left: 56px !important; /* enough space for icons */
         right: 0 !important;
-        max-width: calc(100vw - 56px) !important; /* 48px left + 8px gap */
-        padding: 10px 2vw 10px 2vw !important;
+        max-width: calc(100vw - 64px) !important; /* smaller width */
+        padding: 8px 4vw 8px 4vw !important;
         border-radius: 10px !important;
         top: 50px !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
         min-width: 0 !important;
-        margin: 0 8px !important; /* small gap from screen edge */
+        margin: 0 !important; /* remove margin */
         box-sizing: border-box !important;
       }
       .ud-content h2,
       .earth-content h2,
       .a-content h2 {
-        font-size: 15px !important;
-        margin-bottom: 7px !important;
+        font-size: 14px !important;
+        margin-bottom: 6px !important;
       }
       .ud-content p,
       .earth-content p,
       .a-content p {
-        font-size: 12px !important;
-        margin-bottom: 8px !important;
+        font-size: 11.5px !important;
+        margin-bottom: 6px !important;
       }
       #usersTable,
       #recentTable {
@@ -445,22 +445,22 @@
         padding: 10px 10px !important;
       }
       .a-content {
-        left: 48px !important;
+        left: 56px !important;
         right: 0 !important;
-        max-width: calc(100vw - 56px) !important;
-        padding: 10px 2vw 10px 2vw !important;
+        max-width: calc(100vw - 64px) !important;
+        padding: 8px 4vw 8px 4vw !important;
         border-radius: 10px !important;
         top: 200px !important;
-        font-size: 14px !important;
+        font-size: 13px !important;
         min-width: 0 !important;
-        margin: 0 8px !important;
+        margin: 0 !important;
       }
       .a-content h2 {
-        font-size: 15px !important;
-        margin-bottom: 7px !important;
+        font-size: 14px !important;
+        margin-bottom: 6px !important;
       }
       .a-content p {
-        font-size: 12px !important;
+        font-size: 11.5px !important;
       }
       /* Make form fields more touch-friendly */
       input, button, select, textarea {
@@ -558,6 +558,64 @@
       }
       .ud-content p {
         font-size: 13px;
+      }
+      .internet-icon {
+        top: 44px !important;
+        left: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .mic-icon {
+        top: 92px !important;
+        left: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .ud-icon {
+        top: 140px !important;
+        left: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .a-icon {
+        top: 188px !important;
+        left: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+      }
+      .internet-circle,
+      .mic-circle,
+      .ud-circle,
+      .a-circle {
+        width: 40px !important;
+        height: 40px !important;
+        border-width: 2px !important;
+      }
+      .ud-content,
+      .earth-content,
+      .a-content {
+        left: 56px !important; /* enough space for icons */
+        right: 0 !important;
+        max-width: calc(100vw - 64px) !important; /* smaller width */
+        padding: 8px 4vw 8px 4vw !important;
+        border-radius: 10px !important;
+        top: 50px !important;
+        font-size: 13px !important;
+        min-width: 0 !important;
+        margin: 0 !important; /* remove margin */
+        box-sizing: border-box !important;
+      }
+      .ud-content h2,
+      .earth-content h2,
+      .a-content h2 {
+        font-size: 14px !important;
+        margin-bottom: 6px !important;
+      }
+      .ud-content p,
+      .earth-content p,
+      .a-content p {
+        font-size: 11.5px !important;
+        margin-bottom: 6px !important;
       }
     }
 
@@ -1022,3 +1080,4 @@
   </script>
 </body>
 </html>
+
