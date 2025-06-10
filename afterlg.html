@@ -17,7 +17,6 @@
       align-items: center;
     }
 
-    /* FadeIn animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -29,7 +28,17 @@
       }
     }
 
-    /* Header Container */
+    @keyframes fadeInBox {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .header-container {
       display: flex;
       align-items: center;
@@ -47,7 +56,7 @@
       height: 14px;
       background-color: #4CAF50;
       border-radius: 50%;
-      margin-bottom: 3px; /* lowered the dot */
+      margin-bottom: 3px;
       flex-shrink: 0;
     }
 
@@ -59,7 +68,6 @@
       animation-delay: 0.1s;
     }
 
-    /* Profile Icon */
     .profile {
       position: fixed;
       top: 15px;
@@ -78,7 +86,6 @@
       z-index: 100;
     }
 
-    /* Dropdown menu */
     .dropdown {
       position: fixed;
       top: 70px;
@@ -118,36 +125,187 @@
       background-color: #333;
     }
 
-    /* Boxes container */
-    .boxes-container {
-      display: grid;
-      gap: 12px;
-      width: 100%;
-      max-width: 700px;
-      opacity: 0;
+    .vertical-line {
+      position: fixed;
+      top: 15px;
+      left: 77px;
+      width: 2px;
+      height: calc(100vh - 30px);
+      background: linear-gradient(to bottom, #66ccff 60%, #222 100%);
+      z-index: 90;
+      opacity: 0.7;
       animation: fadeIn 0.6s ease forwards;
-      animation-delay: 0.3s;
-      margin-top: 10px;
-      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      animation-delay: 0.4s;
     }
 
-    /* Box style */
-    .box {
-      background-color: transparent;
+    .internet-icon {
+      position: fixed;
+      top: 115px; /* increased distance from profile icon */
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      z-index: 96;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.45s;
+    }
+
+    .internet-icon.selected .internet-circle,
+    .mic-icon.selected .mic-circle {
+      box-shadow: 0 0 0 4px #66ccff55, 0 0 12px 2px #66ccff99;
+      border-color: #00cfff;
+    }
+
+    .internet-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #222;
       border: 2.5px solid #66ccff;
-      border-radius: 14px;
-      aspect-ratio: 1 / 1;
-      cursor: default;
-      transition: background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
     }
 
-    .box:hover {
-      background-color: #1a1a2e;
+    .internet-icon img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      filter: invert(1);
+    }
+
+    .mic-icon {
+      position: fixed;
+      top: 185px; /* directly under the earth icon */
+      left: 15px;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      z-index: 95;
+      animation: fadeIn 0.6s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .mic-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #222;
+      border: 2.5px solid #66ccff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .mic-icon img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      filter: invert(1);
+    }
+
+    .earth-content {
+      position: fixed;
+      top: 115px;
+      left: 95px;
+      margin: 0;
+      max-width: 340px;
+      background: #181f25;
+      border-radius: 22px;
+      box-shadow: 0 4px 24px #0006;
+      padding: 32px 28px 28px 28px;
+      color: #fff;
+      z-index: 10;
+      opacity: 1;
+      transition: opacity 0.6s, transform 0.6s;
+      display: block;
+      transform: translateY(0);
+      animation: fadeInBox 0.6s ease;
+    }
+
+    .earth-content:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 32px #00cfff55;
+    }
+
+    .mic-icon.selected ~ #earthContent,
+    .mic-icon.selected + .earth-content {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .earth-btn {
+      display: block;
+      width: 100%;
+      margin: 28px 0 0 0;
+      padding: 14px 0;
+      background: linear-gradient(90deg, #00cfff 60%, #66ccff 100%);
+      color: #181f25;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #00cfff33;
+      letter-spacing: 1px;
+    }
+
+    .earth-btn:hover {
+      background: linear-gradient(90deg, #66ccff 60%, #00cfff 100%);
+      color: #111;
+      box-shadow: 0 4px 16px #00cfff55;
     }
 
     @media (max-width: 600px) {
-      .boxes-container {
-        grid-template-columns: repeat(2, 1fr);
+      .profile,
+      .internet-icon,
+      .mic-icon {
+        left: 8px;
+        width: 40px;
+        height: 40px;
+      }
+      .vertical-line {
+        left: 56px;
+        width: 1.5px;
+      }
+      .internet-circle,
+      .mic-circle {
+        width: 40px;
+        height: 40px;
+      }
+      .internet-icon img,
+      .mic-icon img {
+        width: 22px;
+        height: 22px;
+      }
+      .earth-content {
+        left: 60px;
+        right: 10px;
+        max-width: 95vw;
+        padding: 20px 10px 16px 10px;
+      }
+      .earth-btn {
+        font-size: 16px;
+        padding: 12px 0;
+        margin-top: 18px;
+      }
+      .username {
+        font-size: 18px;
+      }
+      .header-container {
+        margin-top: 15px;
+        margin-bottom: 10px;
       }
     }
   </style>
@@ -161,32 +319,39 @@
 
   <div class="profile" id="profileIcon"></div>
 
+  <div class="vertical-line"></div>
+
+  <!-- Add more distance between profile and earth/mic icons -->
+  <div class="internet-icon selected" id="internetIcon">
+    <div class="internet-circle">
+      <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/globe.svg" alt="Internet/Earth Icon" />
+    </div>
+  </div>
+
+  <div class="mic-icon" id="micIcon">
+    <div class="mic-circle">
+      <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/mic-fill.svg" alt="Mic Icon" />
+    </div>
+  </div>
+
+  <div class="earth-content" id="earthContent">
+    <h2>COMPLETE YOUR PROFILE</h2>
+    <button class="earth-btn" id="goBtn">Go</button>
+  </div>
+
   <div class="dropdown" id="dropdownMenu">
-    <button disabled id="profileUser">👤 User</button>
+    <button id="profileUser">👤 User</button>
     <button id="profileSettingsBtn">⚙️ Settings</button>
     <button id="logoutBtn">🚪 Logout</button>
   </div>
 
-  <div class="boxes-container" id="boxesContainer">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-  </div>
-
   <script>
-    // Set username from localStorage
     const username = localStorage.getItem('username') || 'User';
-
-    // Update username text in header and dropdown
     const usernameDisplay = document.getElementById('usernameDisplay');
     const profileUserBtn = document.getElementById('profileUser');
     usernameDisplay.textContent = username;
     profileUserBtn.textContent = `👤 ${username}`;
 
-    // Profile icon dropdown toggle
     const profileIcon = document.getElementById('profileIcon');
     const dropdownMenu = document.getElementById('dropdownMenu');
 
@@ -194,23 +359,44 @@
       dropdownMenu.classList.toggle('visible');
     });
 
-    // Redirect on Settings button click
-    document.getElementById('profileSettingsBtn').addEventListener('click', () => {
+    document.getElementById('profileUser').addEventListener('click', () => {
       window.location.href = 'profile.html';
       dropdownMenu.classList.remove('visible');
     });
 
-    // Logout button - clear username and redirect to login
+    document.getElementById('profileSettingsBtn').addEventListener('click', () => {
+      dropdownMenu.classList.remove('visible');
+    });
+
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('username');
       window.location.href = 'index.html';
     });
 
-    // Close dropdown if clicking outside
     window.addEventListener('click', (e) => {
       if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
         dropdownMenu.classList.remove('visible');
       }
+    });
+
+    const internetIcon = document.getElementById('internetIcon');
+    const micIcon = document.getElementById('micIcon');
+    const earthContent = document.getElementById('earthContent');
+
+    internetIcon.addEventListener('click', () => {
+      internetIcon.classList.add('selected');
+      micIcon.classList.remove('selected');
+      earthContent.style.display = 'block';
+    });
+
+    micIcon.addEventListener('click', () => {
+      micIcon.classList.add('selected');
+      internetIcon.classList.remove('selected');
+      earthContent.style.display = 'none';
+    });
+
+    document.getElementById('goBtn').addEventListener('click', function() {
+      window.location.href = 'profile.html';
     });
   </script>
 </body>
