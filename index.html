@@ -178,13 +178,6 @@
     <label for="username">Username</label>
     <input type="text" id="username" name="username" placeholder="Enter your username" required />
 
-    <div id="shan-special" style="display:none; color:#66ccff; font-size:14px; margin-bottom:8px;">
-      🌟 Welcome, Shan! Here is your special option:
-      <button type="button" style="margin-top:6px; background:#222; color:#66ccff; border:1px solid #66ccff; border-radius:6px; padding:6px 12px; cursor:pointer;">
-        Special Shan Button
-      </button>
-    </div>
-
     <label for="password">Password</label>
     <input type="password" id="password" name="password" placeholder="Enter your password" required />
     <div class="error-message" id="error-msg"></div>
@@ -193,19 +186,6 @@
   </form>
 
   <script src="userpass.js"></script>
-  <script>
-    // Show special option only for username "Shan"
-    const usernameInput = document.getElementById('username');
-    const shanSpecial = document.getElementById('shan-special');
-
-    usernameInput.addEventListener('input', function() {
-      if (usernameInput.value.trim().toLowerCase() === 'shan') {
-        shanSpecial.style.display = 'block';
-      } else {
-        shanSpecial.style.display = 'none';
-      }
-    });
-  </script>
 
 </body>
 </html>
