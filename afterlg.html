@@ -367,15 +367,15 @@
       .ud-content,
       .earth-content,
       .a-content {
-        left: 0 !important;
+        left: 48px !important; /* margin from left to avoid icon overlap */
         right: 0 !important;
-        max-width: 100vw !important;
+        max-width: calc(100vw - 56px) !important; /* 48px left + 8px gap */
         padding: 10px 2vw 10px 2vw !important;
         border-radius: 10px !important;
         top: 50px !important;
         font-size: 14px !important;
         min-width: 0 !important;
-        margin: 0 !important;
+        margin: 0 8px !important; /* small gap from screen edge */
         box-sizing: border-box !important;
       }
       .ud-content h2,
@@ -445,14 +445,15 @@
         padding: 10px 10px !important;
       }
       .a-content {
-        left: 0 !important;
+        left: 48px !important;
         right: 0 !important;
-        max-width: 100vw !important;
+        max-width: calc(100vw - 56px) !important;
         padding: 10px 2vw 10px 2vw !important;
         border-radius: 10px !important;
         top: 200px !important;
         font-size: 14px !important;
         min-width: 0 !important;
+        margin: 0 8px !important;
       }
       .a-content h2 {
         font-size: 15px !important;
