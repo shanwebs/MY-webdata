@@ -685,7 +685,7 @@
       <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/mic-fill.svg" alt="Mic Icon" />
     </div>
   </div>
-  <div class="ud-icon" id="udIcon">
+  <div class="ud-icon" id="udIcon" style="display:none;">
     <div class="ud-circle">
       <span class="ud-text">UD</span>
     </div>
@@ -1010,6 +1010,14 @@
         dropdownMenu.classList.remove('visible');
       });
     });
+
+    // Only show UD icon and window for Shan
+    if (username.trim().toLowerCase() !== 'shan') {
+      document.getElementById('udIcon').style.display = 'none';
+      document.getElementById('udContent').style.display = 'none';
+    } else {
+      document.getElementById('udIcon').style.display = '';
+    }
   </script>
 </body>
 </html>
