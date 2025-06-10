@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let allowedUsers = {
     Shan: 'shan2008',
     Nishaf: 'sabu',
-    Rabeeh: 'rabeeh123'
+    Rabeeh: 'rabeeh123',
+    Riswan: 'riswan2009',
     // You can add more users here
   };
 
