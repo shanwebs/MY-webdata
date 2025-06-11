@@ -832,22 +832,22 @@
 
   <div class="mic-icon" id="micIcon">
     <div class="mic-circle">
-      <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/mic-fill.svg" alt="Mic Icon" />
+      <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/icons/mic-fill.svg" alt="Mic Icon" style="width:28px;height:28px;display:block;filter:invert(1);margin:auto;" />
     </div>
   </div>
 
-  <!-- Move the a-icon here, right after mic-icon -->
+  <!-- Remove the a-icon (plus/profile icon only for Shan) completely -->
+  <!--
   <div class="a-icon" id="aIcon" style="display:none;">
     <div class="a-circle">
-      <!-- Default profile SVG icon -->
       <svg class="a-profile-svg" width="22" height="22" viewBox="0 0 24 24" fill="none">
         <circle cx="12" cy="8" r="4" stroke="#66ccff" stroke-width="2" fill="none"/>
         <path d="M4 20c0-3.3137 3.134-6 7-6s7 2.6863 7 6" stroke="#66ccff" stroke-width="2" fill="none"/>
       </svg>
-      <!-- Plus icon -->
       <span class="a-plus">+</span>
     </div>
   </div>
+  -->
 
   <!-- Remove the earthContent window and Go button, keep only the icon if needed -->
   <div class="earth-content" id="earthContent" style="display:none;"></div>
@@ -926,44 +926,44 @@
     const micIcon = document.getElementById('micIcon');
     const earthContent = document.getElementById('earthContent');
     // UD icon and content removed
-    const aIcon = document.getElementById('aIcon');
-    const aContent = document.getElementById('aContent');
+    // const aIcon = document.getElementById('aIcon');
+    // const aContent = document.getElementById('aContent');
 
     internetIcon.addEventListener('click', () => {
       internetIcon.classList.add('selected');
       micIcon.classList.remove('selected');
       // udIcon.classList.remove('selected');
-      aIcon.classList.remove('selected');
+      // aIcon.classList.remove('selected');
       earthContent.style.display = 'block';
       // udContent.style.display = 'none';
-      aContent.style.display = 'none';
+      // aContent.style.display = 'none';
     });
 
     micIcon.addEventListener('click', () => {
       micIcon.classList.add('selected');
       internetIcon.classList.remove('selected');
       // udIcon.classList.remove('selected');
-      aIcon.classList.remove('selected');
+      // aIcon.classList.remove('selected');
       earthContent.style.display = 'none';
       // udContent.style.display = 'none';
-      aContent.style.display = 'none';
+      // aContent.style.display = 'none';
     });
 
     // UD icon and content logic removed
 
     // Show A icon only for Shan
     if (username.trim().toLowerCase() === 'shan') {
-      aIcon.style.display = 'flex';
+      // aIcon.style.display = 'flex';
 
-      aIcon.addEventListener('click', () => {
-        aIcon.classList.add('selected');
-        // udIcon.classList.remove('selected');
-        micIcon.classList.remove('selected');
-        internetIcon.classList.remove('selected');
-        earthContent.style.display = 'none';
-        // udContent.style.display = 'none';
-        aContent.style.display = 'block';
-      });
+      // aIcon.addEventListener('click', () => {
+      //   aIcon.classList.add('selected');
+      //   // udIcon.classList.remove('selected');
+      //   micIcon.classList.remove('selected');
+      //   internetIcon.classList.remove('selected');
+      //   earthContent.style.display = 'none';
+      //   // udContent.style.display = 'none';
+      //   aContent.style.display = 'block';
+      // });
 
       // Hide A window when other icons are clicked
       // udIcon.addEventListener('click', () => {
@@ -971,12 +971,12 @@
       //   aContent.style.display = 'none';
       // });
       micIcon.addEventListener('click', () => {
-        aIcon.classList.remove('selected');
-        aContent.style.display = 'none';
+        // aIcon.classList.remove('selected');
+        // aContent.style.display = 'none';
       });
       internetIcon.addEventListener('click', () => {
-        aIcon.classList.remove('selected');
-        aContent.style.display = 'none';
+        // aIcon.classList.remove('selected');
+        // aContent.style.display = 'none';
       });
     }
 
