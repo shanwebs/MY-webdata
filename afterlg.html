@@ -98,11 +98,16 @@
       flex-direction: column;
       min-width: 140px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      z-index: 110;
+      z-index: 9999; /* <-- Make sure this is very high */
+      transition: opacity 0.2s;
+      opacity: 0;
+      pointer-events: none;
     }
 
     .dropdown.visible {
       display: flex;
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .dropdown button {
@@ -771,6 +776,40 @@
       color: #181f25;
       border-color: #00ff99;
     }
+
+    #added-users-list {
+      margin-top: 1em;
+      font-size: 1em;
+      color: #00ff99;
+      background: #181f25;
+      border-radius: 10px;
+      padding: 10px 12px;
+      box-shadow: 0 2px 8px #0003;
+      max-width: 340px;
+      word-break: break-word;
+    }
+    #added-users-list ul {
+      padding-left: 1.2em;
+      margin: 0.5em 0 0 0;
+    }
+    #added-users-list li {
+      font-size: 1em;
+      margin-bottom: 4px;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 600px) {
+      #added-users-list {
+        font-size: 0.97em;
+        padding: 8px 4vw;
+        border-radius: 8px;
+        max-width: 98vw;
+      }
+      #added-users-list li {
+        font-size: 0.97em;
+        margin-bottom: 3px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -813,7 +852,8 @@
   <!-- Remove the earthContent window and Go button, keep only the icon if needed -->
   <div class="earth-content" id="earthContent" style="display:none;"></div>
 
-  <!-- Add User (A) Window -->
+  <!-- Remove the Add User (A) Window and its message -->
+  <!--
   <div class="a-content" id="aContent" style="display:none;">
     <h2>Add User</h2>
     <p>You can add new users from here.</p>
@@ -838,12 +878,15 @@
     </form>
     <div id="addUserMsg"></div>
   </div>
+  -->
 
   <div class="dropdown" id="dropdownMenu">
     <button id="profileUser">👤 User</button>
     <button id="profileSettingsBtn">⚙️ Settings</button>
     <button id="logoutBtn">🚪 Logout</button>
   </div>
+
+  <div id="added-users-list" style="margin-top: 1em; font-size: 0.95em; color: #444;"></div>
 
   <script>
     const username = localStorage.getItem('username') || 'User';
@@ -999,6 +1042,7 @@
           msg.style.color = "#00ff99";
           addUserForm.reset();
         }
+        showAddedUsers(); // <-- Add this line here
       });
     }
 
@@ -1068,6 +1112,23 @@
     // } else {
     //   document.getElementById('udIcon').style.display = '';
     // }
+
+    function showAddedUsers() {
+      const listDiv = document.getElementById('added-users-list');
+      if (!listDiv) return;
+      let html = "<b style='color:#00ff99;'>Users added via panel:</b><ul style='margin:0.5em 0 0 0; padding-left:1.2em;'>";
+      let found = false;
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('userpass_')) {
+          const uname = key.replace('userpass_', '');
+          html += `<li><span style="color:#00ff99; margin-right:6px;">👤</span>${uname}</li>`;
+          found = true;
+        }
+      }
+      html += "</ul>";
+      listDiv.innerHTML = found ? html : "<i style='color:#66ccff;'>No users added via panel yet.</i>";
+    }
   </script>
 </body>
 </html>
